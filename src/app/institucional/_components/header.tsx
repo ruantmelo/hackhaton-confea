@@ -12,7 +12,7 @@ export function Header() {
         <li><a href="#">Sobre</a></li>
         <li><a href="#">Transparência</a></li>
         <li><a href="#">Serviços</a></li>
-        <li><a href="#">Fake Conosco</a></li>
+        <li><a href="#">Fale Conosco</a></li>
       </ul>
 
       <Link href="/login" className='flex gap-2 items-center'>

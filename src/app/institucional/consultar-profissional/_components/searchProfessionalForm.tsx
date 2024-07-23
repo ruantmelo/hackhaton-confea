@@ -24,7 +24,6 @@ import {
 } from "@/components/ui/select"
 
 import { Input } from "@/components/ui/input"
-import Link from "next/link"
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -44,7 +43,7 @@ export function SearchProfessionalForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex mx-auto max-w-lg flex-wrap gap-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex mx-auto items-end flex-wrap gap-4">
         <FormField
           control={form.control}
           name="username"
@@ -120,7 +119,7 @@ export function SearchProfessionalForm() {
             </FormItem>
           )}
         />
-        <Button className="w-1/2 mt-6" type="submit">Buscar</Button>
+        <Button className="" type="submit">Buscar</Button>
       </form>
     </Form>
   )
