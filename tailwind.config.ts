@@ -24,6 +24,8 @@ const config = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        'access-background': "var(--access-background)",
+        'yellow-crea': "var(--yellow-crea)",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -72,6 +74,10 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      listStyleType: {
+        square: "square",
+    
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],

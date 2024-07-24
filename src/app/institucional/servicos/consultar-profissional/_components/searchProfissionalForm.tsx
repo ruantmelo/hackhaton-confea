@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -26,9 +25,10 @@ import {
 import { Input } from "@/components/ui/input"
 
 const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
+  nome: z.string(),
+  rnp: z.string(),
+  ufNaturalidade: z.string(),
+  cidadeNaturalidade: z.string(),
 })
 
 export function SearchProfessionalForm() {

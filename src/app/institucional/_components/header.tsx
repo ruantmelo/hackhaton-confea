@@ -15,7 +15,7 @@ export function Header() {
         <li><a href="#">Fale Conosco</a></li>
       </ul>
 
-      <Link href="/login" className='flex gap-2 items-center'>
+      <Link href="/sistema/acesso" className='flex gap-2 items-center'>
         <LuLogIn />
         Área do Profissional
       </Link>

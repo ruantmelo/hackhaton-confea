@@ -30,7 +30,8 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
 
-    /* --crea-blue: 209 100% 30%; */
+    --access-background: rgba(0, 79, 153, 0.75) ;
+    --yellow-crea: #ba9705
   }
 
   .dark {
