@@ -1,1 +1,1 @@
-export const statusRNPLabels = ['Ativo', 'Cancelado', 'Migrado']
+export const statusRNPLabels = ["Ativo", "Cancelado", "Migrado"];

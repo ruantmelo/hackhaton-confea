@@ -1,9 +1,5 @@
 import { Header } from "./_components/header";
 
 export default function Page() {
-  return (
-    <div>
-      PAGINA
-    </div>
-  );
+  return <div>PAGINA</div>;
 }

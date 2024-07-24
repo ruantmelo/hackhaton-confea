@@ -1,27 +1,40 @@
-'use client'
+"use client";
 
-import { DropdownMenu, DropdownMenuShortcut, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuGroup, DropdownMenuItem } from "../ui/dropdown-menu"
-import { Button } from "../ui/button"
-import { Avatar, AvatarImage,AvatarFallback } from "../ui/avatar"
-import { DropdownMenuProps } from "@radix-ui/react-dropdown-menu"
-import { signOut, useSession } from "next-auth/react"
-import { Usuario } from "@/types/next-auth"
+import {
+  DropdownMenu,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+} from "../ui/dropdown-menu";
+import { Button } from "../ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
+import { DropdownMenuProps } from "@radix-ui/react-dropdown-menu";
+import { signOut, useSession } from "next-auth/react";
+import { Usuario } from "@/types/next-auth";
 
-type UserMenuProps = DropdownMenuProps
+type UserMenuProps = DropdownMenuProps;
 
 export const UserMenu = (props: UserMenuProps) => {
- 
-  const session = useSession()
+  const session = useSession();
 
-  const handleSignOut = () => signOut({
-    callbackUrl: "/sistema/acesso"
-  })
+  const handleSignOut = () =>
+    signOut({
+      callbackUrl: "/sistema/acesso",
+    });
 
-  if(!session.data) return null
+  if (!session.data) return null;
 
-  const usuario = session.data.usuario as Usuario
+  const usuario = session.data.usuario as Usuario;
 
-  const initials = usuario.nome.split(' ').slice(0,2).map((n: string) => n[0]).join('') as string
+  const initials = usuario.nome
+    .split(" ")
+    .slice(0, 2)
+    .map((n: string) => n[0])
+    .join("") as string;
 
   return (
     <DropdownMenu {...props}>
@@ -52,7 +65,6 @@ export const UserMenu = (props: UserMenuProps) => {
             Configurações
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
-         
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleSignOut} className="text-red-500">
@@ -61,5 +73,5 @@ export const UserMenu = (props: UserMenuProps) => {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
-}
+  );
+};

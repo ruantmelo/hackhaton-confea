@@ -1,5 +1,11 @@
 import { HiOutlineIdentification } from "react-icons/hi2";
-import {  Construction, LucideProps, NotepadText, TriangleAlert, Users } from "lucide-react"
+import {
+  Construction,
+  LucideProps,
+  NotepadText,
+  TriangleAlert,
+  Users,
+} from "lucide-react";
 
 export const links: {
   icon: React.FC<LucideProps>;
@@ -9,32 +15,32 @@ export const links: {
 }[] = [
   {
     icon: HiOutlineIdentification,
-    text: 'Reg. Pendentes',
-    to: '/#',
-    disabled: true
+    text: "Reg. Pendentes",
+    to: "/#",
+    disabled: true,
   },
   {
-    icon: Users ,
-    text: 'Profissionais',
-    to: '/#',
-    disabled: true
+    icon: Users,
+    text: "Profissionais",
+    to: "/#",
+    disabled: true,
   },
   {
     icon: NotepadText,
-    text: 'Serviços',
-    to: '/#',
-    disabled: true
+    text: "Serviços",
+    to: "/#",
+    disabled: true,
   },
   {
     icon: TriangleAlert,
-    text: 'Fiscalizações',
-    to: '/#',
-    disabled: true
+    text: "Fiscalizações",
+    to: "/#",
+    disabled: true,
   },
   {
     icon: Construction,
-    text: 'Obras',
-    to: '/#',
-    disabled: true
-  }
-]
+    text: "Obras",
+    to: "/#",
+    disabled: true,
+  },
+];

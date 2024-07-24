@@ -50,7 +50,7 @@ export const authConfig: NextAuthOptions = {
               "Content-Type": "application/json",
               Authorization: `Bearer ${data?.accessToken}`,
             },
-          }
+          },
         ).then(async (res) => {
           if (res.status === 200) {
             return res.json();
