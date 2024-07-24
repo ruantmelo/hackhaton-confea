@@ -2,9 +2,7 @@ import { Button } from "@/components/ui/button"
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -74,7 +72,6 @@ const profissionais: Profissional[] = [
     numRegistroCrea: "1231233",
   },
 ]
-
 
 interface SearchResultTableProps{
   selectProfissional: (profissional: Profissional) => void

@@ -1,6 +1,13 @@
 import Link from "next/link";
 import { SignInForm } from "./_components/signInForm";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Entrar",
+  description: "Acesso ao Sistema do Profissional",
+};
+
 export default function Access(){
   return (
     <div className="grid grid-rows-[100px_1fr] justify-center md:grid-rows-1 md:grid-cols-[1.5fr_1fr] h-dvh bg-[url('/construction-people.png')]">

@@ -14,13 +14,14 @@ export const UserMenu = (props: UserMenuProps) => {
   const session = useSession()
 
   const handleSignOut = () => signOut({
-    callbackUrl: "/login"
+    callbackUrl: "/sistema/acesso"
   })
 
   if(!session.data) return null
 
-  const user = session.data.user as User
-  const initials = user.name.split(' ').slice(0,2).map((n: string) => n[0]).join('') as string
+  const usuario = session.data.usuario as Usuario
+
+  const initials = usuario.nome.split(' ').slice(0,2).map((n: string) => n[0]).join('') as string
 
   return (
     <DropdownMenu {...props}>
@@ -35,9 +36,9 @@ export const UserMenu = (props: UserMenuProps) => {
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">{session.data.user.name}</p>
+            <p className="text-sm font-medium leading-none">{usuario.nome}</p>
             <p className="text-xs leading-none text-muted-foreground">
-              {session.data.user.email}
+              {usuario.email}
             </p>
           </div>
         </DropdownMenuLabel>
