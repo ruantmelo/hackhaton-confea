@@ -57,7 +57,6 @@ export function SignInForm() {
     }
 
     if (response?.status === 200) {
-      // redirect
       replace("/sistema");
     }
   };

@@ -16,9 +16,6 @@ export const Sidebar = () => {
   return ( 
     <>
       <aside className={`hidden md:flex flex-col h-full relative bg-primary transition-all duration-300 transition- text-gray-200 px-4 py-6  ${className}`}>
-        {/* <Button variant={'link'} className='text-gray-200 absolute top-0 translate-y-1/2 t right-0' size="icon" onClick={() => setIsOpen(cur => !cur)}>
-          { isOpen ? <MoveLeft /> : <MoveRight />}
-        </Button> */}
 
         <div className='flex w-full justify-end'>
           <Button variant={'link'} className='text-gray-200' size="icon" onClick={() => setIsOpen(cur => !cur)}>
