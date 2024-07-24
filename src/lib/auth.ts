@@ -1,13 +1,13 @@
-import { Usuario } from "@/types/next-auth"
-import NextAuth, { NextAuthOptions } from "next-auth"
-import Credentials from "next-auth/providers/credentials"
+import { Usuario } from "@/types/next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
+import Credentials from "next-auth/providers/credentials";
 
 export const authConfig: NextAuthOptions = {
   debug: process.env.NODE_ENV === "development",
   secret: process.env.NEXTAUTH_SECRET,
   session: {
     strategy: "jwt",
-    maxAge: 60 * 60 * 24, // 24 hours
+    maxAge: 60 * 60 * 24,
   },
   pages: {
     signIn: "/login",
@@ -33,70 +33,64 @@ export const authConfig: NextAuthOptions = {
             senha: credentials?.senha,
           }),
         }).then(async (res) => {
-          console.log('STATUS RESPOSTA LOGIN', res.status)
           if (res.status === 200) {
-            return res.json()
+            return res.json();
           }
 
           const error = await res.text();
-          console.log('res error api ', error )
-          return null
-        })
+          console.error("res error api ", error);
+          return null;
+        });
 
-
-        console.log('BUSCANDO USUÁRIO LOGADO')
-
-        const profile = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/usuario_logado`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${data?.accessToken}`
-          },
-        }).then(async (res) => {
+        const profile = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/usuario_logado`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${data?.accessToken}`,
+            },
+          }
+        ).then(async (res) => {
           if (res.status === 200) {
-            return res.json()
+            return res.json();
           }
 
-          return null
-        })
+          return null;
+        });
 
-        const payload = parseJwt(data.accessToken) as { role: 'ADMIN' | 'USER' }
- 
+        const payload = parseJwt(data.accessToken) as {
+          role: "ADMIN" | "USER";
+        };
+
         if (!data) return null;
-
-        console.log('DATA QUE VAI SER RETORNADA', )
-        // return user object with the their profile data
-        return {...profile, role: payload.role}
+        return { ...profile, role: payload.role };
       },
     }),
   ],
   callbacks: {
     session: ({ session, token }) => {
-      console.log('SESSION CALLBACK ', session, token)
-      const userToken = token as { usuario: Usuario }
+      const userToken = token as { usuario: Usuario };
 
       return {
         ...session,
-       ...userToken,
-      }
+        ...userToken,
+      };
     },
-    jwt: async ({token, user}) => {
-     
-      console.log('JWT CALLBACK ', user)
-      if (user){ // User is available during sign in
-        
-         return {
-            ...token,
-            usuario: user,
-         }
+    jwt: async ({ token, user }) => {
+      if (user) {
+        return {
+          ...token,
+          usuario: user,
+        };
       }
-      return token
-    }
-  }
+      return token;
+    },
+  },
+};
+
+function parseJwt(token: string) {
+  return JSON.parse(Buffer.from(token.split(".")[1], "base64").toString());
 }
 
-function parseJwt (token: string) {
-  return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
-}
-
-export const { handlers, signIn, signOut, auth } = NextAuth(authConfig)
+export const { handlers, signIn, signOut, auth } = NextAuth(authConfig);
