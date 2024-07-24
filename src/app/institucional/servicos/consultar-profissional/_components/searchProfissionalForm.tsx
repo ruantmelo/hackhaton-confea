@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -12,7 +12,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
+} from "@/components/ui/form";
 
 import {
   Select,
@@ -20,61 +20,64 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 
-import { Input } from "@/components/ui/input"
+import { Input } from "@/components/ui/input";
+import { Profissional } from "@/types/profissional";
 
 const formSchema = z.object({
   nome: z.string(),
   rnp: z.string(),
   ufNaturalidade: z.string(),
   cidadeNaturalidade: z.string(),
-})
+});
 
 export function SearchProfessionalForm() {
-  
-  const form = useForm({
+  const form = useForm<Profissional>({
     resolver: zodResolver(formSchema),
-  })
+  });
 
   const onSubmit = () => {
-    console.log('form submitted')
-  }
+    console.log("form submitted");
+  };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="flex mx-auto items-end flex-wrap gap-4">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex mx-auto items-end flex-wrap gap-4"
+      >
         <FormField
           control={form.control}
-          name="username"
+          name="nome"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Nome</FormLabel>
               <FormControl>
                 <Input placeholder="Insira o nome do profissional" {...field} />
               </FormControl>
-              
+
               <FormMessage />
             </FormItem>
           )}
         />
         <FormField
           control={form.control}
-          name="username"
+          name="rnp"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Registro Nacional do Profissional</FormLabel>
               <FormControl>
                 <Input placeholder="Insira o RNP" {...field} />
               </FormControl>
-            
+
               <FormMessage />
             </FormItem>
           )}
         />
         <FormField
           control={form.control}
-          name="email"
+          name="ufNaturalidade"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Estado</FormLabel>
@@ -85,20 +88,20 @@ export function SearchProfessionalForm() {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="m@example.com">Alagoas</SelectItem>
-                  <SelectItem value="m@google.com">São Paulo</SelectItem>
-                  <SelectItem value="m@support.com">Santa Catarina</SelectItem>
+                  <SelectItem value="Alagoas">Alagoas</SelectItem>
+                  <SelectItem value="São Paulo">São Paulo</SelectItem>
+                  <SelectItem value="Santa Catarina">Santa Catarina</SelectItem>
                 </SelectContent>
               </Select>
-             
+
               <FormMessage />
             </FormItem>
           )}
         />
-        
+
         <FormField
           control={form.control}
-          name="email"
+          name="cidadeNaturalidade"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Município</FormLabel>
@@ -109,18 +112,21 @@ export function SearchProfessionalForm() {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>
-                  <SelectItem value="m@example.com">Maceió</SelectItem>
-                  <SelectItem value="m@google.com">Arapiraca</SelectItem>
-                  <SelectItem value="m@support.com">Teotônio Vileva</SelectItem>
+                  <SelectItem value="Maceió">Maceió</SelectItem>
+                  <SelectItem value="Arapiraca">Arapiraca</SelectItem>
+                  <SelectItem value="Teotônio Vilela">
+                    Teotônio Vilela
+                  </SelectItem>
                 </SelectContent>
               </Select>
-             
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button className="" type="submit">Buscar</Button>
+        <Button className="" type="submit">
+          Buscar
+        </Button>
       </form>
     </Form>
-  )
+  );
 }
