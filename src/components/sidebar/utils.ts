@@ -21,8 +21,8 @@ export const links: {
   },
   {
     icon: NotepadText,
-    text: '#',
-    to: '/questoes',
+    text: 'Serviços',
+    to: '/#',
     disabled: true
   },
   {
